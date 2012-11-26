@@ -6,17 +6,20 @@ Redis Bibliographic Framework Datastore
 ---------------------------------------
 The Redis Bibliographic Framework Datastore is based upon the current 
 work being done by the Library of Congress's Bibliographic Framework
-Transition Initiative Forum as presented by Sally McCallum in this
+Transition Initiative Forum first introduced by Sally McCallum in this
 PowerPoint presentation at 
-http://igelu.org/wp-content/uploads/2012/09/IGeLU-sally-McCallum.pptx.
+http://igelu.org/wp-content/uploads/2012/09/IGeLU-sally-McCallum.pptx
+and further defined by the following report, 
+.
 
 This datastore used their preliminary high level model with four core
 classes that borrows a lot from RDA and FRBR. They effectively collapse
-the FRBR Work and Expression into a *Work* class and the FRBR Manifestation
+the FRBR Work and Expression into a *Creative Work* class and the FRBR Manifestation
 and Items into an "Instance" class. The *Authority* class is made up of the
 FRBR Person, Place, Topics, and Corporate Bodies. The last class is the
 *Annotation* class that is made up of assertions about the other core classes
-including related resources to the Work (reviews, abstract, etc.), Instance
+including related resources to the Creative Work (reviews, abstract, etc.), 
+Instance
 (book cover images, web site opening page, etc.), Name authority 
 (creator biographical information), and administrative metadata.
 
@@ -24,7 +27,7 @@ including related resources to the Work (reviews, abstract, etc.), Instance
 +------------------+---------------------+------+----------------------+
 | Entity Model     | conf filename       | port | dbfilename           |
 +------------------+---------------------+------+----------------------+
-| Work             | work.conf           | 6380 | works.rdb            |
+| Creative Work    | creative-work.conf  | 6380 | creative-works.rdb   |
 +------------------+---------------------+------+----------------------+
 | Instance         | instance.conf       | 6381 | instances.rdb        |
 +------------------+---------------------+------+----------------------+

@@ -16,10 +16,11 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "marc_to_bibframe.h"
+#include "marc.h"
 
-int main()
+main () 
 {
-  printf("In MARC21 to Redis Bibframe Application\n");
-  return MARC_TO_BIBFRAME_OK;
+  
+  printf("In MARC21 c parser\n");
+  return MARC_OK;
 }

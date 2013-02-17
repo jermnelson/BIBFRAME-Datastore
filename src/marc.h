@@ -16,10 +16,16 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "marc_to_bibframe.h"
+#include <stdio.h>
 
-int main()
-{
-  printf("In MARC21 to Redis Bibframe Application\n");
-  return MARC_TO_BIBFRAME_OK;
-}
+/* Error codes */
+#define MARC_OK                0
+#define MARC_ERR              -1
+
+typedef struct marcRecord {
+  int size;  /* Size of record */
+} marcRecord;
+
+typedef struct marcControlField {
+  char *data;  /* Pointer to char field, contains positional information */
+} marcControlField;

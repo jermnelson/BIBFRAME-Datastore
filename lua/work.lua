@@ -1,3 +1,3 @@
 -- defines work functions for work Redis instnace
-print("MARCR Redis Work Datastore")
+print("BIBFRAME Redis Work Datastore")
 

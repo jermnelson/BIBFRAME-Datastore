@@ -19,8 +19,7 @@
 #include "marc.h"
 
 main () 
-{
-  
+{  
   printf("In MARC21 c parser\n");
   return MARC_OK;
 }

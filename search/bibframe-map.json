@@ -1,0 +1,673 @@
+{
+  "mappings": {
+    "Annotation": {
+      "properties": {
+        "bf:annotates": {
+          "type": "string"
+        },
+        "bf:changeDate": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "bf:derivedFrom": {
+          "type": "string"
+        },
+        "bf:descriptionConventions": {
+          "type": "string"
+        },
+        "bf:descriptionLanguage": {
+          "type": "string"
+        },
+        "bf:descriptionModifier": {
+          "type": "string"
+        },
+        "bf:descriptionSource": {
+          "type": "string"
+        },
+        "bf:generationProcess": {
+          "type": "string"
+        },
+        "fcrepo:created": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:hasLocation": {
+          "type": "string"
+        },
+        "fcrepo:lastModified": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:uuid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "HeldItem": {
+      "properties": {
+        "bf:barcode": {
+          "type": "string"
+        },
+        "bf:holdingFor": {
+          "type": "string"
+        },
+        "bf:itemId": {
+          "type": "string"
+        },
+        "bf:label": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "bf:shelfMarkLcc": {
+          "type": "string"
+        },
+        "bf:subLocation": {
+          "type": "string"
+        },
+        "fcrepo:created": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:hasLocation": {
+          "type": "string"
+        },
+        "fcrepo:lastModified": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:uuid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Instance": {
+      "properties": {
+        "bf:carrierCategory": {
+          "type": "string"
+        },
+        "bf:contentsNote": {
+          "type": "string"
+        },
+        "bf:derivedFrom": {
+          "type": "string"
+        },
+        "bf:dimensions": {
+          "type": "string"
+        },
+        "bf:edition": {
+          "type": "string"
+        },
+        "bf:editionResponsibility": {
+          "type": "string"
+        },
+        "bf:extent": {
+          "type": "string"
+        },
+        "bf:format": {
+          "type": "string"
+        },
+        "bf:illustrationNote": {
+          "type": "string"
+        },
+        "bf:instanceOf": {
+          "type": "string"
+        },
+        "bf:instanceTitle": {
+          "type": "string"
+        },
+        "bf:isbn10": {
+          "type": "string"
+        },
+        "bf:isbn13": {
+          "type": "string"
+        },
+        "bf:lccn": {
+          "type": "string"
+        },
+        "bf:modeOfIssuance": {
+          "type": "string"
+        },
+        "bf:note": {
+          "type": "string"
+        },
+        "bf:otherPhysicalFormat": {
+          "type": "string"
+        },
+        "bf:providerStatement": {
+          "type": "string"
+        },
+        "bf:publication": {
+          "type": "string"
+        },
+        "bf:responsibilityStatement": {
+          "type": "string"
+        },
+        "bf:stockNumber": {
+          "type": "string"
+        },
+        "bf:supplementaryContentNote": {
+          "type": "string"
+        },
+        "bf:systemNumber": {
+          "type": "string"
+        },
+        "bf:title": {
+          "type": "string"
+        },
+        "bf:titleStatement": {
+          "type": "string"
+        },
+        "bf:titleVariation": {
+          "type": "string"
+        },
+        "fcrepo:created": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:hasLocation": {
+          "type": "string"
+        },
+        "fcrepo:lastModified": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:uuid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Organization": {
+      "properties": {
+        "bf:authorizedAccessPoint": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "bf:hasAuthority": {
+          "type": "string"
+        },
+        "bf:label": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "fcrepo:created": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:hasLocation": {
+          "type": "string"
+        },
+        "fcrepo:lastModified": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:uuid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Person": {
+      "properties": {
+        "bf:authorizedAccessPoint": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "bf:hasAuthority": {
+          "type": "string"
+        },
+        "bf:label": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "fcrepo:created": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:hasLocation": {
+          "type": "string"
+        },
+        "fcrepo:lastModified": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:uuid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Place": {
+      "properties": {
+        "bf:authorizedAccessPoint": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "bf:hasAuthority": {
+          "type": "string"
+        },
+        "bf:label": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "fcrepo:created": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:hasLocation": {
+          "type": "string"
+        },
+        "fcrepo:lastModified": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:uuid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Provider": {
+      "properties": {
+        "bf:copyrightDate": {
+          "type": "string"
+        },
+        "bf:providerDate": {
+          "type": "string"
+        },
+        "bf:providerName": {
+          "type": "string"
+        },
+        "bf:providerPlace": {
+          "type": "string"
+        },
+        "fcrepo:created": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:hasLocation": {
+          "type": "string"
+        },
+        "fcrepo:lastModified": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:uuid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Resource": {
+      "properties": {
+        "bf:annotationAssertedBy": {
+          "type": "string"
+        },
+        "bf:annotationBody": {
+          "type": "string"
+        },
+        "bf:authorizedAccessPoint": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "bf:categoryValue": {
+          "type": "string"
+        },
+        "bf:classificationNumber": {
+          "type": "string"
+        },
+        "bf:classificationScheme": {
+          "type": "string"
+        },
+        "bf:hasAuthority": {
+          "type": "string"
+        },
+        "bf:identifierAssigner": {
+          "type": "string"
+        },
+        "bf:identifierScheme": {
+          "type": "string"
+        },
+        "bf:identifierStatus": {
+          "type": "string"
+        },
+        "bf:identifierValue": {
+          "type": "string"
+        },
+        "bf:label": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "bf:languageOfPartUri": {
+          "type": "string"
+        },
+        "bf:resourcePart": {
+          "type": "string"
+        },
+        "bf:summaryOf": {
+          "type": "string"
+        },
+        "fcrepo:created": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:hasLocation": {
+          "type": "string"
+        },
+        "fcrepo:lastModified": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:uuid": {
+          "type": "string"
+        },
+        "http://www.loc.gov/standards/mads/authoritativeLabel": {
+          "type": "string"
+        },
+        "http://www.loc.gov/standards/mads/isMemberOfMADSScheme": {
+          "type": "string"
+        },
+        "mads:authoritativeLabel": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Title": {
+      "properties": {
+        "bf:label": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "bf:partNumber": {
+          "type": "string"
+        },
+        "bf:partTitle": {
+          "type": "string"
+        },
+        "bf:subtitle": {
+          "type": "string"
+        },
+        "bf:titleValue": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "fcrepo:created": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:hasLocation": {
+          "type": "string"
+        },
+        "fcrepo:lastModified": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:uuid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Topic": {
+      "properties": {
+        "bf:authoritySource": {
+          "type": "string"
+        },
+        "bf:authorizedAccessPoint": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "bf:hasAuthority": {
+          "type": "string"
+        },
+        "bf:label": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "fcrepo:created": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:hasLocation": {
+          "type": "string"
+        },
+        "fcrepo:lastModified": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:uuid": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Work": {
+      "properties": {
+        "bf:authorizedAccessPoint": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "bf:awardNote": {
+          "type": "string"
+        },
+        "bf:classification": {
+          "type": "string"
+        },
+        "bf:classificationLcc": {
+          "type": "string"
+        },
+        "bf:contributor": {
+          "type": "string"
+        },
+        "bf:creator": {
+          "type": "string"
+        },
+        "bf:derivedFrom": {
+          "type": "string"
+        },
+        "bf:formDesignation": {
+          "type": "string"
+        },
+        "bf:hasAuthority": {
+          "type": "string"
+        },
+        "bf:hasPart": {
+          "type": "string"
+        },
+        "bf:intendedAudience": {
+          "type": "string"
+        },
+        "bf:issn": {
+          "type": "string"
+        },
+        "bf:label": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "bf:language": {
+          "type": "string"
+        },
+        "bf:musicVersion": {
+          "type": "string"
+        },
+        "bf:originDate": {
+          "type": "string"
+        },
+        "bf:partOf": {
+          "type": "string"
+        },
+        "bf:relatedResource": {
+          "type": "string"
+        },
+        "bf:reproduction": {
+          "type": "string"
+        },
+        "bf:series": {
+          "type": "string"
+        },
+        "bf:subject": {
+          "type": "string"
+        },
+        "bf:title": {
+          "type": "string"
+        },
+        "bf:translationOf": {
+          "type": "string"
+        },
+        "bf:workTitle": {
+          "type": "string"
+        },
+        "fcrepo:created": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:hasLocation": {
+          "type": "string"
+        },
+        "fcrepo:lastModified": {
+          "format": "dateOptionalTime",
+          "type": "date"
+        },
+        "fcrepo:uuid": {
+          "type": "string"
+        },
+        "http://www.loc.gov/standards/mads/authoritativeLabel": {
+          "type": "string"
+        },
+        "mads:authoritativeLabel": {
+          "fields": {
+            "raw": {
+              "index": "not_analyzed",
+              "type": "string"
+            }
+          },
+          "index": "analyzed",
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

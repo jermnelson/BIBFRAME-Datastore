@@ -1,0 +1,3 @@
+[submodule "semantic-server"]
+	path = semantic-server
+	url = https://github.com/jermnelson/semantic-server.git

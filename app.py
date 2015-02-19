@@ -34,11 +34,9 @@ def start_fedora(**kwargs):
             os.path.join(BASE_DIR, "repository", "repository.json"))]
     if "memory" in kwargs:
         java_command.append("-Xmx{}".format(kwargs.get("memory")))
-    java_command.append("fcrepo-webapp-4.1.0-jetty-console.war")
-##    java_command.append(os.path.join(
-##        BASE_DIR,
-##        "repository",
-##        kwargs.get("jarfile", "fcrepo-webapp-4.1.0-jetty-console.war")))
+    java_command.append(
+        kwargs.get("war-file",
+            "fcrepo-webapp-4.1.0-jetty-console.war"))
     java_command.append("--headless")
     return java_command
 
@@ -47,11 +45,20 @@ def start_fedora_messenger(**kwargs):
         "java",
         "-jar"
     ]
+    return java_command
 
 def start_fuseki(**kwargs):
-    java_commands = []
-
-
+    java_command = [
+        "java",
+        "-Xmx1200M",
+        "-jar",
+        "fuseki-server.jar",
+    ]
+    if kwargs.get('update', True):
+        java_command.append("--update")
+    java_command.append("--loc=store")
+    java_command.append("/{}".format(kwargs.get('datastore', 'bf')))
+    return java_command
 
 
 def main():
@@ -69,22 +76,38 @@ class Services(object):
 
     def __init__(self):
         self.elastic_search, self.fedora_repo = None, None
+        self.fuseki = None
+
+    def on_get(self, req, resp):
+        resp.status = falcon.HTTP_200
+        resp.body = json.dumps({ 'services': {
+            "elastic-search": None,
+            "fedora4": None,
+            "fuseki": None
+
+            }
+
+            })
 
     def on_post(self, req, resp):
-        if self.elastic_search and self.fedora_repo:
+        if self.fedora_repo and (self.fuseki or self.elastic_search):
             raise falcon.HTTPForbidden(
                 "Services Already Running",
-                "Elastic Search and Fedora 4 already running")
+                "Elastic Search, Fedora 4, and Fuseki already running")
         os.chdir(os.path.join(BASE_DIR, "repository"))
         self.fedora_repo = subprocess.Popen(
             start_fedora())
         os.chdir(os.path.join(BASE_DIR, "search", "bin"))
         self.elastic_search = subprocess.Popen(
             start_elastic_search())
+        os.chdir(os.path.join(BASE_DIR, "triplestore"))
+        self.fuseki = subprocess.Popen(
+            start_fuseki())
         resp.status = falcon.HTTP_200
         resp.body = json.dumps({"services": {
             "elastic-search": {"pid": self.elastic_search.pid},
-            "fedora4": {"pid": self.fedora_repo.pid}}})
+            "fedora4": {"pid": self.fedora_repo.pid},
+            "fuseki": {"pid": self.fuseki.pid}}})
 
     def on_delete(self, req, resp):
         if not self.elastic_search and not self.fedora_repo:
@@ -97,6 +120,7 @@ class Services(object):
         #! JAVA.
         self.elastic_search.kill()
         self.fedora_repo.kill()
+        self.fuseki.kill()
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(
             {"message": "Fedora 4 and Elastic Search stopped"})

@@ -33,10 +33,12 @@
 <bf = 'http://bibframe.org/vocab/'>
 <madsoriginal = 'http://www.loc.gov/standards/mads/'>
 <mads = 'http://www.loc.gov/mads/rdf/v1#'>
+<modsrdf = 'http://www.loc.gov/mods/rdf/v1#'>
 
 /*
  * Misc. namespaces
  */
+<bgn = 'http://bibliograph.net/'>
 <schema = 'http://schema.org/'>
 
 /*

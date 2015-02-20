@@ -10,6 +10,7 @@ with open(os.path.join(BASE_DIR, "VERSION")) as version:
 import falcon
 import importlib
 import json
+import rdflib
 import subprocess
 import sys
 
@@ -18,6 +19,15 @@ semantic_server = importlib.import_module("semantic-server.app", None)
 fedora_repo = None
 elastic_search = None
 global fuseki
+
+bf_ontology = rdflib.Graph().parse('http://bibframe.org/vocab.rdf')
+sparql = """
+SELECT DISTINCT ?bf
+WHERE {
+   ?bf <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+}"""
+
+bf_classes = [row[0] for row in bf_ontology.query(sparql)]
 
 def start_elastic_search(**kwargs):
     if os.environ['OS'].startswith("Win"):
@@ -103,7 +113,7 @@ class Services(object):
         os.chdir(os.path.join(BASE_DIR, "triplestore"))
         self.fuseki = subprocess.Popen(
             start_fuseki())
-        resp.status = falcon.HTTP_200
+        resp.status = falcon.HTTP_201
         resp.body = json.dumps({"services": {
             "elastic-search": {"pid": self.elastic_search.pid},
             "fedora4": {"pid": self.fedora_repo.pid},
@@ -116,7 +126,7 @@ class Services(object):
                 "Elastic Search and Fedora 4 are not running",
                 300)
         #! This doesn't work for Elastic Search because running from
-        #! elasticsearch.bat and not running the program directly with
+##        #! elasticsearch.bat and not running the program directly with
         #! JAVA.
         self.elastic_search.kill()
         self.fedora_repo.kill()

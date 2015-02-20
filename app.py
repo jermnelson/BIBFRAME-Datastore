@@ -3,6 +3,7 @@ __license__ = "GPLv3"
 
 
 import os
+
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 with open(os.path.join(BASE_DIR, "VERSION")) as version:
     __version__ = version.read().strip()
@@ -14,10 +15,10 @@ import json
 import rdflib
 import subprocess
 import sys
-try:
-    from .resources import bibframe
-except SystemError:
-    from resources import bibframe
+##try:
+##    from .core.resources import bibframe
+##except SystemError:
+from core.resources import bibframe
 
 #semantic_server = importlib.import_module("semantic-server.app", None)
 import semantic_server.app as semantic_server

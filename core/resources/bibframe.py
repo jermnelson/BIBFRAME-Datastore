@@ -6,10 +6,11 @@ import sys
 
 #semantic_server = importlib.import_module("../semantic-server")
 #fedora = importlib.import_module(".repository.resources.fedora", "..semantic-server")
-sys.path.append("../../semantic_server")
+##sys.path.append("../../semantic_server")
 
 
 import semantic_server.repository.resources.fedora as fedora
+
 from semantic_server.repository import BF, RDF
 
 class Bibframe(fedora.Resource):

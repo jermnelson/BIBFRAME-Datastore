@@ -15,19 +15,51 @@ import subprocess
 import sys
 
 semantic_server = importlib.import_module("semantic-server.app", None)
+fedora = importlib.import_module(
+    "semantic-server.repository.resources.fedora")
 
 fedora_repo = None
 elastic_search = None
 global fuseki
 
-bf_ontology = rdflib.Graph().parse('http://bibframe.org/vocab.rdf')
-sparql = """
-SELECT DISTINCT ?bf
-WHERE {
-   ?bf <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
-}"""
 
-bf_classes = [row[0] for row in bf_ontology.query(sparql)]
+
+def build_rest_endpoints():
+    def _get_or_add_class(name_uri):
+        name = str(name_uri).split("/")[-1]
+        if hasattr(sys.modules[__name__], name):
+            return getattr(sys.modules[__name__], name)
+        parent_uri = bf_ontology.value(
+            subject=name_uri,
+            predicate=rdflib.RDFS.subClassOf)
+        if parent_uri:
+            parent_class = _get_or_add_class(parent_uri)
+        else:
+            parent_class = fedora.Resource
+        class_ = type(name, (parent_class,), {})
+        setattr(
+            sys.modules[__name__],
+            name,
+            class_)
+        return class_
+    bf_ontology = rdflib.Graph().parse('http://bibframe.org/vocab.rdf')
+    class_sparql = """
+    SELECT DISTINCT ?bf
+    WHERE {
+       ?bf <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+    }"""
+    bf_classes = [row[0] for row in bf_ontology.query(class_sparql)]
+    for class_ in bf_classes:
+        class_name = str(class_).split("/")[-1]
+        new_class = _get_or_add_class(class_)
+        semantic_server.api.add_route(
+            "/{}".format(class_name),
+            new_class(semantic_server.config))
+
+
+
+
+
 
 def start_elastic_search(**kwargs):
     if os.environ['OS'].startswith("Win"):
@@ -143,6 +175,7 @@ semantic_server.api.add_route("/services", Services())
 
 
 # Add BIBFRAME specific REST API
+build_rest_endpoints()
 ##semantic_server.api.add_route("/Work")
 ##semantic_server.api.add_route("/Annotation")
 ##semantic_server.api.add_route("/Authority")

@@ -39,6 +39,7 @@
  * Misc. namespaces
  */
 <bgn = 'http://bibliograph.net/'>
+<prov = 'http://www.w3.org/ns/prov#'>
 <schema = 'http://schema.org/'>
 
 /*

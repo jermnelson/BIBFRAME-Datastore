@@ -58,11 +58,16 @@ def start_fedora(**kwargs):
     java_command.append("--headless")
     return java_command
 
+
 def start_fedora_messenger(**kwargs):
     java_command = [
         "java",
-        "-jar"
+        "-jar",
+        kwargs.get("war-file",
+            "fcrepo-message-consumer-webapp-4.1.0-jetty-console.war"),
+        "--headless"
     ]
+    java_command.append("--port {}".format(kwargs.get("port", 9090)))
     return java_command
 
 def start_fuseki(**kwargs):
@@ -94,23 +99,26 @@ class Services(object):
 
     def __init__(self):
         self.elastic_search, self.fedora_repo = None, None
-        self.fuseki = None
+        self.fedora_messenger, self.fuseki = None, None
 
     def __start_services__(self):
-        os.chdir(os.path.join(BASE_DIR, "repository"))
-        self.fedora_repo = subprocess.Popen(
-            start_fedora())
         os.chdir(os.path.join(BASE_DIR, "search", "bin"))
         self.elastic_search = subprocess.Popen(
             start_elastic_search())
         os.chdir(os.path.join(BASE_DIR, "triplestore"))
         self.fuseki = subprocess.Popen(
             start_fuseki())
+        os.chdir(os.path.join(BASE_DIR, "repository"))
+        self.fedora_repo = subprocess.Popen(
+            start_fedora())
+        ##self.fedora_messenger = subprocess.Popen(
+        ##    start_fedora_messenger())
+      
 
     def on_get(self, req, resp):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps({ 'services': {
-            "elastic-search": None,
+            "elastic-search": self.elastic_search,
             "fedora4": None,
             "fuseki": None
 
@@ -128,6 +136,7 @@ class Services(object):
         resp.body = json.dumps({"services": {
             "elastic-search": {"pid": self.elastic_search.pid},
             "fedora4": {"pid": self.fedora_repo.pid},
+          #  "fedora4-messenger": {"pid": self.fedora_messenger.pid},
             "fuseki": {"pid": self.fuseki.pid}}})
 
     def on_delete(self, req, resp):
@@ -141,6 +150,7 @@ class Services(object):
         #! JAVA.
         self.elastic_search.kill()
         self.fedora_repo.kill()
+        #self.fedora_messenger.kill()
         self.fuseki.kill()
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(

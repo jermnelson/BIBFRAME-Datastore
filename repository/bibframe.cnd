@@ -47,6 +47,7 @@
  * enable or disable a fedora-specific behavior of that node.
  */
 <fedoraconfig = 'http://fedora.info/definitions/v4/config#'>
+<indexing = 'http://fedora.info/definitions/v4/indexing#'>
 
 <bibframe = 'info:fedora/bibframe/'>
 

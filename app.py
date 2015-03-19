@@ -65,9 +65,10 @@ def start_fedora_messenger(**kwargs):
         "-jar",
         kwargs.get("war-file",
             "fcrepo-message-consumer-webapp-4.1.0-jetty-console.war"),
-        "--headless"
+        "--headless",
+        "--port",
+        kwargs.get("port", "9090")
     ]
-    java_command.append("--port {}".format(kwargs.get("port", 9090)))
     return java_command
 
 def start_fuseki(**kwargs):
@@ -111,8 +112,8 @@ class Services(object):
         os.chdir(os.path.join(BASE_DIR, "repository"))
         self.fedora_repo = subprocess.Popen(
             start_fedora())
-        ##self.fedora_messenger = subprocess.Popen(
-        ##    start_fedora_messenger())
+        #self.fedora_messenger = subprocess.Popen(
+        #    start_fedora_messenger())
       
 
     def on_get(self, req, resp):
@@ -136,7 +137,7 @@ class Services(object):
         resp.body = json.dumps({"services": {
             "elastic-search": {"pid": self.elastic_search.pid},
             "fedora4": {"pid": self.fedora_repo.pid},
-          #  "fedora4-messenger": {"pid": self.fedora_messenger.pid},
+         #   "fedora4-messenger": {"pid": self.fedora_messenger.pid},
             "fuseki": {"pid": self.fuseki.pid}}})
 
     def on_delete(self, req, resp):

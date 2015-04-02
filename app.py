@@ -119,10 +119,9 @@ class Services(object):
     def on_get(self, req, resp):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps({ 'services': {
-            "elastic-search": self.elastic_search,
-            "fedora4": None,
-            "fuseki": None
-
+            "elastic-search": self.elastic_search.pid or None,
+            "fedora4": self.fedora_repo.pid or None,
+            "fuseki": self.fuseki.pid or None 
             }
 
             })

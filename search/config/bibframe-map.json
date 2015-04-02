@@ -186,6 +186,14 @@
         "fcrepo:uuid": {
           "type": "string"
         },
+       "suggest": {
+            "type": "completion",
+            "analyzer": "simple",
+            "search_analyzer": "simple",
+           "payloads": true
+        },
+
+
         "type": {
           "type": "string"
         }
@@ -230,6 +238,13 @@
         "fcrepo:uuid": {
           "type": "string"
         },
+        "suggest": {
+            "type": "completion",
+            "analyzer": "simple",
+            "search_analyzer": "simple",
+           "payloads": true
+        },
+
         "type": {
           "type": "string"
         }
@@ -274,6 +289,13 @@
         "fcrepo:uuid": {
           "type": "string"
         },
+        "suggest": {
+            "type": "completion",
+            "analyzer": "simple",
+            "search_analyzer": "simple",
+           "payloads": true
+        },
+
         "type": {
           "type": "string"
         }
@@ -318,6 +340,13 @@
         "fcrepo:uuid": {
           "type": "string"
         },
+         "suggest": {
+            "type": "completion",
+            "analyzer": "simple",
+            "search_analyzer": "simple",
+           "payloads": true
+        },
+
         "type": {
           "type": "string"
         }
@@ -544,6 +573,12 @@
         "fcrepo:uuid": {
           "type": "string"
         },
+        "suggest": {
+            "type": "completion",
+            "analyzer": "simple",
+            "search_analyzer": "simple",
+           "payloads": true
+        },
         "type": {
           "type": "string"
         }
@@ -663,6 +698,12 @@
           },
           "index": "analyzed",
           "type": "string"
+        },
+        "suggest": {
+            "type": "completion",
+            "analyzer": "simple",
+            "search_analyzer": "simple",
+           "payloads": true
         },
         "type": {
           "type": "string"

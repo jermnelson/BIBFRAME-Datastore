@@ -54,7 +54,7 @@ def start_fedora(**kwargs):
         java_command.append("-Xmx{}".format(kwargs.get("memory")))
     java_command.append(
         kwargs.get("war-file",
-            "fcrepo-webapp-4.1.0-jetty-console.war"))
+            "fcrepo-webapp-4.1.1-jetty-console.jar"))
     java_command.append("--headless")
     return java_command
 
@@ -64,7 +64,7 @@ def start_fedora_messenger(**kwargs):
         "java",
         "-jar",
         kwargs.get("war-file",
-            "fcrepo-message-consumer-webapp-4.1.0-jetty-console.war"),
+            "fcrepo-message-consumer-webapp-4.1.1-jetty-console.jar"),
         "--headless",
         "--port",
         kwargs.get("port", "9090")

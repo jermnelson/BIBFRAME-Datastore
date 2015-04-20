@@ -1,5 +1,6 @@
 *.swp
 *.pyc
+*.jar
 *.war
 repository/fcrepo4-data*
 search/bin*

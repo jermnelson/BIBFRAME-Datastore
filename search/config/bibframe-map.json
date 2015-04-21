@@ -186,7 +186,7 @@
         "fcrepo:uuid": {
           "type": "string"
         },
-       "suggest": {
+       "instance_suggest": {
             "type": "completion",
             "analyzer": "simple",
             "search_analyzer": "simple",
@@ -238,7 +238,7 @@
         "fcrepo:uuid": {
           "type": "string"
         },
-        "suggest": {
+        "organization_suggest": {
             "type": "completion",
             "analyzer": "simple",
             "search_analyzer": "simple",
@@ -289,7 +289,7 @@
         "fcrepo:uuid": {
           "type": "string"
         },
-        "suggest": {
+        "person_suggest": {
             "type": "completion",
             "analyzer": "simple",
             "search_analyzer": "simple",
@@ -340,7 +340,7 @@
         "fcrepo:uuid": {
           "type": "string"
         },
-         "suggest": {
+         "place_suggest": {
             "type": "completion",
             "analyzer": "simple",
             "search_analyzer": "simple",
@@ -573,7 +573,7 @@
         "fcrepo:uuid": {
           "type": "string"
         },
-        "suggest": {
+        "topic_suggest": {
             "type": "completion",
             "analyzer": "simple",
             "search_analyzer": "simple",
@@ -699,7 +699,7 @@
           "index": "analyzed",
           "type": "string"
         },
-        "suggest": {
+        "work_suggest": {
             "type": "completion",
             "analyzer": "simple",
             "search_analyzer": "simple",

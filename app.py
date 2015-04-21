@@ -53,7 +53,7 @@ def start_fedora(**kwargs):
     if "memory" in kwargs:
         java_command.append("-Xmx{}".format(kwargs.get("memory")))
     java_command.append(
-        kwargs.get("war-file",
+        kwargs.get("jar-file",
             "fcrepo-webapp-4.1.1-jetty-console.jar"))
     java_command.append("--headless")
     return java_command
@@ -111,7 +111,7 @@ class Services(object):
             start_fuseki())
         os.chdir(os.path.join(BASE_DIR, "repository"))
         self.fedora_repo = subprocess.Popen(
-            start_fedora())
+            start_fedora(memory='1G'))
         #self.fedora_messenger = subprocess.Popen(
         #    start_fedora_messenger())
       

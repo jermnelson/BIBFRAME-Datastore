@@ -2,10 +2,15 @@
 *.pyc
 *.jar
 *.war
+log*
 repository/fcrepo4-data*
 search/bin*
 search/data*
 search/lib*
 search/log*
-
-
+triplestore/Data*
+triplestore/config*.ttl
+triplestore/fuseki*
+triplestore/page*
+triplestore/s-*
+triplestore/store*

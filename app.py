@@ -38,7 +38,7 @@ for name, obj in inspect.getmembers(bibframe):
 
 
 def start_elastic_search(**kwargs):
-    if os.environ['OS'].startswith("Win"):
+    if sys.platform.startswith("win"):
         es_command = ["elasticsearch.bat"]
     else:
         es_command = ["elasticsearch"]

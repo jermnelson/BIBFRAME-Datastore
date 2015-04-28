@@ -2,7 +2,9 @@
 *.pyc
 *.jar
 *.war
+*.sh
 log*
+*.tar.gz
 repository/fcrepo4-data*
 search/bin*
 search/data*

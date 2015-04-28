@@ -4,8 +4,14 @@ __license__ = "GPLv3"
 
 import os
 
-BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-with open(os.path.join(BASE_DIR, "VERSION")) as version:
+CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+BASE_DIR = os.path.abspath(os.path.dirname(CURRENT_DIR))
+if os.path.exists(os.path.join(CURRENT_DIR, "VERSION")):
+    version_filepath = os.path.join(CURRENT_DIR, "VERSION")
+if os.path.exists(os.path.join(BASE_DIR, "VERSION")):
+    version_filepath = os.path.join(BASE_DIR, "VERSION")
+
+with open(version_filepath) as version:
     __version__ = version.read().strip()
 
 import falcon
@@ -38,6 +44,7 @@ for name, obj in inspect.getmembers(bibframe):
 
 
 def start_elastic_search(**kwargs):
+    print("System platform is {}".format(sys.platform))
     if sys.platform.startswith("win"):
         es_command = ["elasticsearch.bat"]
     else:
@@ -86,15 +93,8 @@ def start_fuseki(**kwargs):
 
 
 def main():
-    os.chdir(os.path.join(BASE_DIR, "repository"))
-    fedora_process = subprocess.Popen(
-        start_fedora())
-    os.chdir(os.path.join(BASE_DIR, "search", "bin"))
-    es_process = subprocess.Popen(
-        start_elastic_search())
-    print("Fedora Process pid={}".format(fedora_process.pid))
-    print("Elastic search Process pid={}".format(es_process.pid))
-
+    print("Running BIBFRAME Datastore")
+    semantic_server.main()
 
 class Services(object):
 
@@ -103,15 +103,15 @@ class Services(object):
         self.fedora_messenger, self.fuseki = None, None
 
     def __start_services__(self):
-        os.chdir(os.path.join(BASE_DIR, "search", "bin"))
+        os.chdir(os.path.join(CURRENT_DIR, "search", "bin"))
         self.elastic_search = subprocess.Popen(
             start_elastic_search())
-        os.chdir(os.path.join(BASE_DIR, "triplestore"))
+        os.chdir(os.path.join(CURRENT_DIR, "triplestore"))
         self.fuseki = subprocess.Popen(
             start_fuseki())
-        os.chdir(os.path.join(BASE_DIR, "repository"))
-        self.fedora_repo = subprocess.Popen(
-            start_fedora(memory='1G'))
+        #os.chdir(os.path.join(BASE_DIR, "repository"))
+        #self.fedora_repo = subprocess.Popen(
+        #    start_fedora(memory='1G'))
         #self.fedora_messenger = subprocess.Popen(
         #    start_fedora_messenger())
       
@@ -135,7 +135,7 @@ class Services(object):
         resp.status = falcon.HTTP_201
         resp.body = json.dumps({"services": {
             "elastic-search": {"pid": self.elastic_search.pid},
-            "fedora4": {"pid": self.fedora_repo.pid},
+         #   "fedora4": {"pid": self.fedora_repo.pid},
          #   "fedora4-messenger": {"pid": self.fedora_messenger.pid},
             "fuseki": {"pid": self.fuseki.pid}}})
 
@@ -170,4 +170,4 @@ semantic_server.api.add_route("/services", Services())
 ##semantic_server.api.add_route("/Instance")
 
 if __name__ == "__main__":
-    semantic_server.main()
+   main() 

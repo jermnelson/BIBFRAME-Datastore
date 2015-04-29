@@ -44,7 +44,6 @@ for name, obj in inspect.getmembers(bibframe):
 
 
 def start_elastic_search(**kwargs):
-    print("System platform is {}".format(sys.platform))
     if sys.platform.startswith("win"):
         es_command = ["elasticsearch.bat"]
     else:
@@ -109,9 +108,9 @@ class Services(object):
         os.chdir(os.path.join(CURRENT_DIR, "triplestore"))
         self.fuseki = subprocess.Popen(
             start_fuseki())
-        #os.chdir(os.path.join(BASE_DIR, "repository"))
-        #self.fedora_repo = subprocess.Popen(
-        #    start_fedora(memory='1G'))
+        os.chdir(os.path.join(CURRENT_DIR, "repository"))
+        self.fedora_repo = subprocess.Popen(
+            start_fedora(memory='1G'))
         #self.fedora_messenger = subprocess.Popen(
         #    start_fedora_messenger())
       
@@ -135,7 +134,7 @@ class Services(object):
         resp.status = falcon.HTTP_201
         resp.body = json.dumps({"services": {
             "elastic-search": {"pid": self.elastic_search.pid},
-         #   "fedora4": {"pid": self.fedora_repo.pid},
+            "fedora4": {"pid": self.fedora_repo.pid},
          #   "fedora4-messenger": {"pid": self.fedora_messenger.pid},
             "fuseki": {"pid": self.fuseki.pid}}})
 
@@ -150,7 +149,7 @@ class Services(object):
         #! JAVA.
         self.elastic_search.kill()
         self.fedora_repo.kill()
-        #self.fedora_messenger.kill()
+        self.fedora_messenger.kill()
         self.fuseki.kill()
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(

@@ -21,12 +21,8 @@ import json
 import rdflib
 import subprocess
 import sys
-##try:
-##    from .core.resources import bibframe
-##except SystemError:
 from core.resources import bibframe
 
-#semantic_server = importlib.import_module("semantic-server.app", None)
 import semantic_server.app as semantic_server
 
 fedora_repo = None
@@ -51,11 +47,13 @@ def start_elastic_search(**kwargs):
     return es_command
 
 def start_fedora(**kwargs):
+    repo_json_file = os.path.join(BASE_DIR, "repository", "repository.json")
+    if not os.path.exists(repo_json_file):
+        repo_json_file = os.path.join(CURRENT_DIR, "repository", "repository.json")
     java_command = [
         "java",
         "-jar",
-        "-Dfcrepo.modeshape.configuration=file:/{}".format(
-            os.path.join(BASE_DIR, "repository", "repository.json"))]
+        "-Dfcrepo.modeshape.configuration=file:/{}".format(repo_json_file)]
     if "memory" in kwargs:
         java_command.append("-Xmx{}".format(kwargs.get("memory")))
     java_command.append(

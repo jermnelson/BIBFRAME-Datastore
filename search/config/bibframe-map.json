@@ -1,6 +1,5 @@
-{
-  "mappings": {
-    "Annotation": {
+{    
+  "Annotation": {
       "properties": {
         "bf:annotates": {
           "type": "string"
@@ -723,5 +722,4 @@
         }
       }
     }
-  }
 }

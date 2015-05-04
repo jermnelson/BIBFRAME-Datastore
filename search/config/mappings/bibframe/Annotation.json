@@ -1,0 +1,48 @@
+{
+  "Annotation": {
+    "properties": {
+      "bf:annotates": {
+        "type": "string"
+      },
+      "bf:changeDate": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "bf:derivedFrom": {
+        "type": "string"
+      },
+      "bf:descriptionConventions": {
+        "type": "string"
+      },
+      "bf:descriptionLanguage": {
+        "type": "string"
+      },
+      "bf:descriptionModifier": {
+        "type": "string"
+      },
+      "bf:descriptionSource": {
+        "type": "string"
+      },
+      "bf:generationProcess": {
+        "type": "string"
+      },
+      "fcrepo:created": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:hasLocation": {
+        "type": "string"
+      },
+      "fcrepo:lastModified": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:uuid": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      }
+    }
+  }
+}

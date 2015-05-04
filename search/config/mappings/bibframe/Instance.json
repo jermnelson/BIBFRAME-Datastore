@@ -1,0 +1,113 @@
+{
+  "Instance": {
+    "properties": {
+      "bf:carrierCategory": {
+        "type": "string"
+      },
+      "bf:contentsNote": {
+        "type": "string"
+      },
+      "bf:derivedFrom": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "bf:dimensions": {
+        "type": "string"
+      },
+      "bf:edition": {
+        "type": "string"
+      },
+      "bf:editionResponsibility": {
+        "type": "string"
+      },
+      "bf:extent": {
+        "type": "string"
+      },
+      "bf:format": {
+        "type": "string"
+      },
+      "bf:illustrationNote": {
+        "type": "string"
+      },
+      "bf:instanceOf": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "bf:instanceTitle": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "bf:isbn10": {
+        "type": "string"
+      },
+      "bf:isbn13": {
+        "type": "string"
+      },
+      "bf:lccn": {
+        "type": "string"
+      },
+      "bf:modeOfIssuance": {
+        "type": "string"
+      },
+      "bf:note": {
+        "type": "string"
+      },
+      "bf:otherPhysicalFormat": {
+        "type": "string"
+      },
+      "bf:providerStatement": {
+        "type": "string"
+      },
+      "bf:publication": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "bf:responsibilityStatement": {
+        "type": "string"
+      },
+      "bf:stockNumber": {
+        "type": "string"
+      },
+      "bf:supplementaryContentNote": {
+        "type": "string"
+      },
+      "bf:systemNumber": {
+        "type": "string"
+      },
+      "bf:title": {
+        "type": "string"
+      },
+      "bf:titleStatement": {
+        "type": "string"
+      },
+      "bf:titleVariation": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "fcrepo:created": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:hasLocation": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "fcrepo:lastModified": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:uuid": {
+        "type": "string"
+      },
+      "instance_suggest": {
+        "analyzer": "simple",
+        "payloads": true,
+        "search_analyzer": "simple",
+        "type": "completion"
+      },
+      "type": {
+        "type": "string"
+      }
+    }
+  }
+}

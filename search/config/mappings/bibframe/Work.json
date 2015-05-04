@@ -1,0 +1,135 @@
+{
+  "Work": {
+    "properties": {
+      "bf:authorizedAccessPoint": {
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "type": "string"
+          }
+        },
+        "index": "analyzed",
+        "type": "string"
+      },
+      "bf:awardNote": {
+        "type": "string"
+      },
+      "bf:classification": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "bf:classificationLcc": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "bf:contributor": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "bf:creator": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "bf:derivedFrom": {
+        "type": "string"
+      },
+      "bf:formDesignation": {
+        "type": "string"
+      },
+      "bf:hasAuthority": {
+        "type": "string"
+      },
+      "bf:hasPart": {
+        "type": "string"
+      },
+      "bf:intendedAudience": {
+        "type": "string"
+      },
+      "bf:issn": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "bf:label": {
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "type": "string"
+          }
+        },
+        "index": "analyzed",
+        "type": "string"
+      },
+      "bf:language": {
+        "type": "string"
+      },
+      "bf:musicVersion": {
+        "type": "string"
+      },
+      "bf:originDate": {
+        "type": "string"
+      },
+      "bf:partOf": {
+        "type": "string"
+      },
+      "bf:relatedResource": {
+        "type": "string"
+      },
+      "bf:reproduction": {
+        "type": "string"
+      },
+      "bf:series": {
+        "type": "string"
+      },
+      "bf:subject": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "bf:title": {
+        "type": "string"
+      },
+      "bf:translationOf": {
+        "type": "string"
+      },
+      "bf:workTitle": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "fcrepo:created": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:hasLocation": {
+        "type": "string"
+      },
+      "fcrepo:lastModified": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:uuid": {
+        "type": "string"
+      },
+      "http://www.loc.gov/standards/mads/authoritativeLabel": {
+        "type": "string"
+      },
+      "mads:authoritativeLabel": {
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "type": "string"
+          }
+        },
+        "index": "analyzed",
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      },
+      "work_suggest": {
+        "analyzer": "simple",
+        "payloads": true,
+        "search_analyzer": "simple",
+        "type": "completion"
+      }
+    }
+  }
+}

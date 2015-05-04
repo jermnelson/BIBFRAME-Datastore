@@ -1,0 +1,36 @@
+{
+  "Provider": {
+    "properties": {
+      "bf:copyrightDate": {
+        "type": "string"
+      },
+      "bf:providerDate": {
+        "type": "string"
+      },
+      "bf:providerName": {
+        "type": "string"
+      },
+      "bf:providerPlace": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "fcrepo:created": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:hasLocation": {
+        "type": "string"
+      },
+      "fcrepo:lastModified": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:uuid": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      }
+    }
+  }
+}

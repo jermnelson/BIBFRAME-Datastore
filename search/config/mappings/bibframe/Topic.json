@@ -1,0 +1,55 @@
+{
+  "Topic": {
+    "properties": {
+      "bf:authoritySource": {
+        "type": "string"
+      },
+      "bf:authorizedAccessPoint": {
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "type": "string"
+          }
+        },
+        "index": "analyzed",
+        "type": "string"
+      },
+      "bf:hasAuthority": {
+        "type": "string"
+      },
+      "bf:label": {
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "type": "string"
+          }
+        },
+        "index": "analyzed",
+        "type": "string"
+      },
+      "fcrepo:created": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:hasLocation": {
+        "type": "string"
+      },
+      "fcrepo:lastModified": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:uuid": {
+        "type": "string"
+      },
+      "topic_suggest": {
+        "analyzer": "simple",
+        "payloads": true,
+        "search_analyzer": "simple",
+        "type": "completion"
+      },
+      "type": {
+        "type": "string"
+      }
+    }
+  }
+}

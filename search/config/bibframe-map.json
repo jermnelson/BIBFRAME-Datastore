@@ -52,6 +52,7 @@
           "type": "string"
         },
         "bf:holdingFor": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "bf:itemId": {
@@ -101,6 +102,7 @@
           "type": "string"
         },
         "bf:derivedFrom": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "bf:dimensions": {
@@ -122,9 +124,11 @@
           "type": "string"
         },
         "bf:instanceOf": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "bf:instanceTitle": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "bf:isbn10": {
@@ -149,6 +153,7 @@
           "type": "string"
         },
         "bf:publication": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "bf:responsibilityStatement": {
@@ -170,6 +175,7 @@
           "type": "string"
         },
         "bf:titleVariation": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "fcrepo:created": {
@@ -177,6 +183,7 @@
           "type": "date"
         },
         "fcrepo:hasLocation": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "fcrepo:lastModified": {
@@ -192,8 +199,6 @@
             "search_analyzer": "simple",
            "payloads": true
         },
-
-
         "type": {
           "type": "string"
         }
@@ -364,6 +369,7 @@
           "type": "string"
         },
         "bf:providerPlace": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "fcrepo:created": {
@@ -600,15 +606,19 @@
           "type": "string"
         },
         "bf:classification": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "bf:classificationLcc": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "bf:contributor": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "bf:creator": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "bf:derivedFrom": {
@@ -627,7 +637,8 @@
           "type": "string"
         },
         "bf:issn": {
-          "type": "string"
+         "index": "not_analyzed",
+         "type": "string"
         },
         "bf:label": {
           "fields": {
@@ -661,6 +672,7 @@
           "type": "string"
         },
         "bf:subject": {
+          "index": "not_analyzed", 
           "type": "string"
         },
         "bf:title": {
@@ -670,6 +682,7 @@
           "type": "string"
         },
         "bf:workTitle": {
+          "index": "not_analyzed",
           "type": "string"
         },
         "fcrepo:created": {

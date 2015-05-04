@@ -3,6 +3,7 @@
 *.jar
 *.war
 *.sh
+*.log
 log*
 *.tar.gz
 repository/fcrepo4-data*

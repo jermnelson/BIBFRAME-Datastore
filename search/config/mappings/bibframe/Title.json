@@ -1,0 +1,52 @@
+{
+  "Title": {
+    "properties": {
+      "bf:label": {
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "type": "string"
+          }
+        },
+        "index": "analyzed",
+        "type": "string"
+      },
+      "bf:partNumber": {
+        "type": "string"
+      },
+      "bf:partTitle": {
+        "type": "string"
+      },
+      "bf:subtitle": {
+        "type": "string"
+      },
+      "bf:titleValue": {
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "type": "string"
+          }
+        },
+        "index": "analyzed",
+        "type": "string"
+      },
+      "fcrepo:created": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:hasLocation": {
+        "type": "string"
+      },
+      "fcrepo:lastModified": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:uuid": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      }
+    }
+  }
+}

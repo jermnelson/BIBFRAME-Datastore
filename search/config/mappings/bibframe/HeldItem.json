@@ -1,0 +1,49 @@
+{
+  "HeldItem": {
+    "properties": {
+      "bf:barcode": {
+        "type": "string"
+      },
+      "bf:holdingFor": {
+        "index": "not_analyzed",
+        "type": "string"
+      },
+      "bf:itemId": {
+        "type": "string"
+      },
+      "bf:label": {
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "type": "string"
+          }
+        },
+        "index": "analyzed",
+        "type": "string"
+      },
+      "bf:shelfMarkLcc": {
+        "type": "string"
+      },
+      "bf:subLocation": {
+        "type": "string"
+      },
+      "fcrepo:created": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:hasLocation": {
+        "type": "string"
+      },
+      "fcrepo:lastModified": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:uuid": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      }
+    }
+  }
+}

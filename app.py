@@ -4,8 +4,14 @@ __license__ = "GPLv3"
 
 import os
 
-BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-with open(os.path.join(BASE_DIR, "VERSION")) as version:
+CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+BASE_DIR = os.path.abspath(os.path.dirname(CURRENT_DIR))
+if os.path.exists(os.path.join(CURRENT_DIR, "VERSION")):
+    version_filepath = os.path.join(CURRENT_DIR, "VERSION")
+if os.path.exists(os.path.join(BASE_DIR, "VERSION")):
+    version_filepath = os.path.join(BASE_DIR, "VERSION")
+
+with open(version_filepath) as version:
     __version__ = version.read().strip()
 
 import falcon
@@ -15,12 +21,8 @@ import json
 import rdflib
 import subprocess
 import sys
-##try:
-##    from .core.resources import bibframe
-##except SystemError:
 from core.resources import bibframe
 
-#semantic_server = importlib.import_module("semantic-server.app", None)
 import semantic_server.app as semantic_server
 
 fedora_repo = None
@@ -38,23 +40,25 @@ for name, obj in inspect.getmembers(bibframe):
 
 
 def start_elastic_search(**kwargs):
-    if os.environ['OS'].startswith("Win"):
+    if sys.platform.startswith("win"):
         es_command = ["elasticsearch.bat"]
     else:
         es_command = ["elasticsearch"]
     return es_command
 
 def start_fedora(**kwargs):
+    repo_json_file = os.path.join(BASE_DIR, "repository", "repository.json")
+    if not os.path.exists(repo_json_file):
+        repo_json_file = os.path.join(CURRENT_DIR, "repository", "repository.json")
     java_command = [
         "java",
         "-jar",
-        "-Dfcrepo.modeshape.configuration=file:/{}".format(
-            os.path.join(BASE_DIR, "repository", "repository.json"))]
+        "-Dfcrepo.modeshape.configuration=file:/{}".format(repo_json_file)]
     if "memory" in kwargs:
         java_command.append("-Xmx{}".format(kwargs.get("memory")))
     java_command.append(
-        kwargs.get("war-file",
-            "fcrepo-webapp-4.1.0-jetty-console.war"))
+        kwargs.get("jar-file",
+            "fcrepo-webapp-4.1.1-jetty-console.jar"))
     java_command.append("--headless")
     return java_command
 
@@ -64,7 +68,7 @@ def start_fedora_messenger(**kwargs):
         "java",
         "-jar",
         kwargs.get("war-file",
-            "fcrepo-message-consumer-webapp-4.1.0-jetty-console.war"),
+            "fcrepo-message-consumer-webapp-4.1.1-jetty-console.jar"),
         "--headless",
         "--port",
         kwargs.get("port", "9090")
@@ -86,15 +90,8 @@ def start_fuseki(**kwargs):
 
 
 def main():
-    os.chdir(os.path.join(BASE_DIR, "repository"))
-    fedora_process = subprocess.Popen(
-        start_fedora())
-    os.chdir(os.path.join(BASE_DIR, "search", "bin"))
-    es_process = subprocess.Popen(
-        start_elastic_search())
-    print("Fedora Process pid={}".format(fedora_process.pid))
-    print("Elastic search Process pid={}".format(es_process.pid))
-
+    print("Running BIBFRAME Datastore")
+    semantic_server.main()
 
 class Services(object):
 
@@ -103,15 +100,15 @@ class Services(object):
         self.fedora_messenger, self.fuseki = None, None
 
     def __start_services__(self):
-        os.chdir(os.path.join(BASE_DIR, "search", "bin"))
+        os.chdir(os.path.join(CURRENT_DIR, "search", "bin"))
         self.elastic_search = subprocess.Popen(
             start_elastic_search())
-        os.chdir(os.path.join(BASE_DIR, "triplestore"))
+        os.chdir(os.path.join(CURRENT_DIR, "triplestore"))
         self.fuseki = subprocess.Popen(
             start_fuseki())
-        os.chdir(os.path.join(BASE_DIR, "repository"))
+        os.chdir(os.path.join(CURRENT_DIR, "repository"))
         self.fedora_repo = subprocess.Popen(
-            start_fedora())
+            start_fedora(memory='1G'))
         #self.fedora_messenger = subprocess.Popen(
         #    start_fedora_messenger())
       
@@ -119,10 +116,9 @@ class Services(object):
     def on_get(self, req, resp):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps({ 'services': {
-            "elastic-search": self.elastic_search,
-            "fedora4": None,
-            "fuseki": None
-
+            "elastic-search": self.elastic_search.pid or None,
+            "fedora4": self.fedora_repo.pid or None,
+            "fuseki": self.fuseki.pid or None 
             }
 
             })
@@ -151,7 +147,7 @@ class Services(object):
         #! JAVA.
         self.elastic_search.kill()
         self.fedora_repo.kill()
-        #self.fedora_messenger.kill()
+        self.fedora_messenger.kill()
         self.fuseki.kill()
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(
@@ -171,4 +167,4 @@ semantic_server.api.add_route("/services", Services())
 ##semantic_server.api.add_route("/Instance")
 
 if __name__ == "__main__":
-    semantic_server.main()
+   main() 

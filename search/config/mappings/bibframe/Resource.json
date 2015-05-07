@@ -1,0 +1,98 @@
+{
+  "Resource": {
+    "properties": {
+      "bf:annotationAssertedBy": {
+        "type": "string"
+      },
+      "bf:annotationBody": {
+        "type": "string"
+      },
+      "bf:authorizedAccessPoint": {
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "type": "string"
+          }
+        },
+        "index": "analyzed",
+        "type": "string"
+      },
+      "bf:categoryValue": {
+        "type": "string"
+      },
+      "bf:classificationNumber": {
+        "type": "string"
+      },
+      "bf:classificationScheme": {
+        "type": "string"
+      },
+      "bf:hasAuthority": {
+        "type": "string"
+      },
+      "bf:identifierAssigner": {
+        "type": "string"
+      },
+      "bf:identifierScheme": {
+        "type": "string"
+      },
+      "bf:identifierStatus": {
+        "type": "string"
+      },
+      "bf:identifierValue": {
+        "type": "string"
+      },
+      "bf:label": {
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "type": "string"
+          }
+        },
+        "index": "analyzed",
+        "type": "string"
+      },
+      "bf:languageOfPartUri": {
+        "type": "string"
+      },
+      "bf:resourcePart": {
+        "type": "string"
+      },
+      "bf:summaryOf": {
+        "type": "string"
+      },
+      "fcrepo:created": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:hasLocation": {
+        "type": "string"
+      },
+      "fcrepo:lastModified": {
+        "format": "dateOptionalTime",
+        "type": "date"
+      },
+      "fcrepo:uuid": {
+        "type": "string"
+      },
+      "http://www.loc.gov/standards/mads/authoritativeLabel": {
+        "type": "string"
+      },
+      "http://www.loc.gov/standards/mads/isMemberOfMADSScheme": {
+        "type": "string"
+      },
+      "mads:authoritativeLabel": {
+        "fields": {
+          "raw": {
+            "index": "not_analyzed",
+            "type": "string"
+          }
+        },
+        "index": "analyzed",
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      }
+    }
+  }
+}

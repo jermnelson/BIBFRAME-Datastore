@@ -145,13 +145,15 @@ class Services(object):
         #! This doesn't work for Elastic Search because running from
 ##        #! elasticsearch.bat and not running the program directly with
         #! JAVA.
-        self.elastic_search.kill()
-        self.fedora_repo.kill()
-        self.fedora_messenger.kill()
-        self.fuseki.kill()
+        for service in [self.elastic_search, 
+                        self.fedora_repo,
+                        self.fuseki]:
+            if service is not None:
+                service.kill()
+                
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(
-            {"message": "Fedora 4 and Elastic Search stopped"})
+            {"message": "Services stopped"})
 
 
 

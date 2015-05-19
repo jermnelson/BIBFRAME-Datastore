@@ -21,9 +21,8 @@ import json
 import rdflib
 import subprocess
 import sys
-#from ..core.resources import bibframe
-
-from ..semantic_server.app import app as semantic_server
+from core.resources import bibframe
+import semantic_server.app  as semantic_server
 
 fedora_repo = None
 elastic_search = None
@@ -100,13 +99,13 @@ class Services(object):
         self.fedora_messenger, self.fuseki = None, None
 
     def __start_services__(self):
-        os.chdir(os.path.join(CURRENT_DIR, "search", "bin"))
+        os.chdir(os.path.join(BASE_DIR, "search", "bin"))
         self.elastic_search = subprocess.Popen(
             start_elastic_search())
-        os.chdir(os.path.join(CURRENT_DIR, "triplestore"))
+        os.chdir(os.path.join(BASE_DIR, "triplestore"))
         self.fuseki = subprocess.Popen(
             start_fuseki())
-        os.chdir(os.path.join(CURRENT_DIR, "repository"))
+        os.chdir(os.path.join(BASE_DIR, "repository"))
         self.fedora_repo = subprocess.Popen(
             start_fedora(memory='1G'))
         #self.fedora_messenger = subprocess.Popen(

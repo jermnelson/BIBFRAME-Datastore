@@ -1,6 +1,6 @@
 __author__ = "Jeremy Nelson"
 
-from setuptools import setup
+from setuptools import setup, find_packages
 from setuptools.command.install import install
 import os
 import re
@@ -65,15 +65,19 @@ setup(
               'semantic web'],
     py_modules=['app'],
     version=__version__,
-    packages=['semantic_server',
-              'semantic_server.analytics',
-              'semantic_server.analytics.resources',
-              'semantic_server.analytics.utilities',
-              'semantic_server.repository.resources',
-              'semantic_server.repository.utilities',
-              'semantic_server.repository.utilities.migrating',
-              'semantic_server.tests',
-              'tests'],
+    packages = find_packages(exclude=['repository', 
+                                      'search', 
+                                      'triplestore',
+                                      'tests']),
+#     packages=['app',
+#              'semantic_server',
+#              'semantic_server.analytics',
+#              'semantic_server.analytics.resources',
+#              'semantic_server.analytics.utilities',
+#              'semantic_server.repository.resources',
+#              'semantic_server.repository.utilities',
+#              'semantic_server.repository.utilities.migrating',
+#              ],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Console',

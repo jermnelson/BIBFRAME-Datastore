@@ -21,9 +21,9 @@ import json
 import rdflib
 import subprocess
 import sys
-from core.resources import bibframe
+#from ..core.resources import bibframe
 
-import semantic_server.app as semantic_server
+from ..semantic_server.app import app as semantic_server
 
 fedora_repo = None
 elastic_search = None

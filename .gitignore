@@ -6,6 +6,8 @@
 *.log
 log*
 *.tar.gz
+/dist/
+/*.egg-info
 repository/fcrepo4-data*
 search/bin*
 search/data*

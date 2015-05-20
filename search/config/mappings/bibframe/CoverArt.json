@@ -1,0 +1,10 @@
+{
+  "CoverArt": {
+    "properties": {
+      "bf:coverArtFor": {
+        "index": "not_analyzed",
+        "type": "string"
+      }
+    }
+  }
+}

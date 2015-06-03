@@ -88,6 +88,7 @@ def start_fuseki(**kwargs):
     return java_command
 
 
+
 def main():
     print("Running BIBFRAME Datastore")
     semantic_server.main()
@@ -111,6 +112,7 @@ class Services(object):
         #self.fedora_messenger = subprocess.Popen(
         #    start_fedora_messenger())
       
+
 
     def on_get(self, req, resp):
         resp.status = falcon.HTTP_200

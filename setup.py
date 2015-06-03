@@ -33,7 +33,7 @@ class BIBFRAMEDatastoreInstall(install):
                 return True
         return False
 
-    def __install_dependency__(self, **kwargs):
+    def __install_tomcat__(self, **kwargs):
         pass
 
     def run(self):
